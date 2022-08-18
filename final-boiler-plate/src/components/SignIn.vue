@@ -28,7 +28,7 @@
   <p>Time to build up the Final Project!</p>
 </section>
  
-  <p class="wu-text">Wu Tang Forever</p>
+  <p class="wu-text">Wu Tang Forever I love Marcos</p>
 </template>
 
 <script setup>
