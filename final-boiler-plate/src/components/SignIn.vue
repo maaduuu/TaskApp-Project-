@@ -6,7 +6,7 @@
     <div class="login-header">
   
       <a href="#"><img src="https://res.cloudinary.com/dnsnkrcru/image/upload/v1648297523/taskApp/imgs/logo1_ryvwid.svg" alt="logo" class="logo-page"></a>
-        <h1>Bienvenido a TaskApp</h1>
+        <h1 class="text-3xl font-bold">Bienvenido a TaskApp</h1>
           <p>Organiza tus proyectos de la forma mas comoda!</p>
   
     </div>
@@ -18,7 +18,8 @@
         <label for="password">Password</label>
         <input type="password" placeholder="*********">
         <button>Sing In</button>
-        <p>No tienes cuenta? <router-link to="sign-up">Registrate</router-link></p>  
+        <p>No tienes cuenta? <router-link to="sign-up">Registrate</router-link></p>
+        
       </form>
       
     </div>    
