@@ -3,6 +3,10 @@
   
    <div class="container-login">
 
+    <div class="md:flex">
+  <!-- Login Container -->
+  <div class="justify-center align-middle h-screen flex-col flex">
+  <!-- Login Header -->
     <div class="login-header">
   
       <a href="#"><img src="https://res.cloudinary.com/dnsnkrcru/image/upload/v1648297523/taskApp/imgs/logo1_ryvwid.svg" alt="logo" class="logo-page"></a>
@@ -10,7 +14,7 @@
           <p>Organiza tus proyectos de la forma mas comoda!</p>
   
     </div>
-      
+  <!-- Login Form -->
     <div class="login-form">
       <form action="data-to-supabase">
         <label for="login">Login </label>
@@ -22,9 +26,22 @@
         
       </form>
       
-    </div>    
+    </div>   
+  </div>
+  
 
-   </div>
+   <!-- Container img -->
+    <div class="bg-[src('')] hidden md:contents">
+     
+      <div class="w-[50%]">
+        <img src="https://images.unsplash.com/photo-1456324504439-367cee3b3c32?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="">
+      </div>
+   
+    </div>  
+ 
+ </div>
+ 
+ </div>
 </section>
 </template>
 

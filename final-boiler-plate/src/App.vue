@@ -28,7 +28,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div>
+  <div class="h-screen">
     <div>
       
     </div>
