@@ -13,11 +13,11 @@
       
     <div class="login-form">
       <form action="data-to-supabase">
-        <label for="login">Login</label>
-        <input type="text" placeholder="ironhacker@gmail.com">
-        <label for="password">Password</label>
-        <input type="password" placeholder="*********">
-        <button>Sing In</button>
+        <label for="login">Login </label>
+        <input type="text" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Email address">
+        <label for="password">Password </label>
+        <input type="password" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="*********">
+        <button class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3">Sing In</button>
         <p>No tienes cuenta? <router-link to="sign-up">Registrate</router-link></p>
         
       </form>
@@ -25,11 +25,7 @@
     </div>    
 
    </div>
- 
-  <p>Time to build up the Final Project!</p>
 </section>
- 
-  <p class="wu-text">Wu Tang Forever I love Marcos</p>
 </template>
 
 <script setup>
