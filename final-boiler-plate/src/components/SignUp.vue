@@ -22,7 +22,7 @@
     <div class="login-form">
       <form @submit.prevent="register" action="data-to-supabase">
         <label for="login">Email </label>
-        <input type="text" required v-model="email" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Email address">
+        <input type="email" required v-model="email" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Email address">
         <label for="password">Password </label>
         <input type="password" required v-model="password" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="*********">
         <label for="password">Confirm Password </label>
@@ -82,7 +82,8 @@ const register = async () => {
       password:password.value,
     });
     if (error) throw error;
-    router.push ({name: "auth/login"})
+  router.push ({path: 'login'})
+
   }
   catch(error){
     errorMsg.value = error.message;
@@ -90,7 +91,8 @@ const register = async () => {
   errorMsg.value = null;
  }, 5000);
   }
-  return;
+  alert ("We have sent you a mail to verificate!")
+  return ;
   }
   
  errorMsg.value = "Password is not the same";
