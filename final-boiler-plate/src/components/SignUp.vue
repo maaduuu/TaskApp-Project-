@@ -8,13 +8,19 @@
     <div class="login-header text-center flex items-center flex-col">
   
       <a href="#"><img src="https://res.cloudinary.com/dnsnkrcru/image/upload/v1648297523/taskApp/imgs/logo1_ryvwid.svg" alt="logo" class=" h-8 logo-page"></a>
-        <h1 class="text-3xl font-bold">Bienvenido a TaskApp</h1>
-          <p>Registrate en TaskApp y organiza tus proyectos!</p>
+        <h1 class="text-3xl font-bold">Welcome to TaskApp</h1>
+          <p>Register on TaskApp and organize your projects!</p>
   
     </div>
-  <!-- Login Form -->
+    <!-- Catch Error -->
+
+    <div v-if="errorMsg" class="mb-10 p-4 rounded-md bg-light-grey shadow-lg">
+      <p class="text-red-500">{{errorMsg}}</p>
+
+    </div>
+  <!-- Register Form -->
     <div class="login-form">
-      <form action="data-to-supabase">
+      <form @submit.prevent="register" action="data-to-supabase">
         <label for="login">Email </label>
         <input type="text" required v-model="email" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Email address">
         <label for="password">Password </label>
@@ -22,7 +28,7 @@
         <label for="password">Confirm Password </label>
         <input type="password" required v-model="confirmPassword" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="*********">
         <button type="submit" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 w-full mb-3">Registrate</button>
-        <p>Ya tienes cuenta? <router-link to="login">Inicia sesion</router-link></p>
+        <p>You already have an account? <router-link to="login">Login</router-link></p>
         
       </form>
       
@@ -49,9 +55,12 @@
 <script setup>
 import PersonalRouter from "./PersonalRouter.vue";
 import {ref} from "vue";
+import {supabase} from "../supabase"
+import { useRouter } from "vue-router";
 
 // Route Variables
 const route = "/auth/login";
+const router = useRouter();
 const buttonText = "Test the Sign In Route";
 
 // Input Fields
@@ -63,6 +72,32 @@ const confirmPassword = ref(null);
 // Error Message
 
 const errorMsg = ref(null); 
+
+// Register Function
+const register = async () => {
+ if (password.value === confirmPassword.value){
+  try { 
+    const { error } = await supabase.auth.signUp({
+      email: email.value,
+      password:password.value,
+    });
+    if (error) throw error;
+    router.push ({name: "auth/login"})
+  }
+  catch(error){
+    errorMsg.value = error.message;
+     setTimeout(() =>{
+  errorMsg.value = null;
+ }, 5000);
+  }
+  return;
+  }
+  
+ errorMsg.value = "Password is not the same";
+ setTimeout(() =>{
+  errorMsg.value = null;
+ }, 5000);
+};
 
 // Show hide password variable
 
