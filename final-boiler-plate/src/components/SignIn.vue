@@ -12,14 +12,20 @@
           <p>Organize your projects in the most comfortable way!</p>
   
     </div>
+      <!-- Catch Error -->
+
+    <div v-if="errorMsg" class="mb-6 p-2 rounded-md bg-light-grey shadow-lg leading-1">
+      <p class="text-red-500">{{errorMsg}}</p>
+
+    </div>
   <!-- Login Form -->
     <div class="login-form">
-      <form action="data-to-supabase">
+      <form @submit.prevent="signIn">
         <label for="login">Email </label>
-        <input type="text" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Email address">
+        <input type="email" v-model="email" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Email address">
         <label for="password">Password </label>
-        <input type="password" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="*********">
-        <button class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 w-full mb-3">Inicia Sesion</button>
+        <input type="password" v-model="password" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="*********">
+        <button type="submit" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 w-full mb-3">Inicia Sesion</button>
         <p>No tienes cuenta? <router-link to="sign-up">Registrate</router-link></p>
         
       </form>
@@ -54,39 +60,62 @@ import { storeToRefs } from "pinia";
 // Route Variables
 const route = "/auth/sign-up";
 const buttonText = "Test the Sign Up Route";
+const redirect = useRouter();
 
 // Input Fields
+
 const email = ref("");
 const password = ref("");
 
 // Error Message
-const errorMsg = ref("");
 
-//Show hide password variables
-const passwordFieldType = computed(() =>
-  hidePassword.value ? "password" : "text"
-);
-const hidePassword = ref(true);
+const errorMsg = ref("");  
 
-// Router to push user once SignedIn to the HomeView
-const redirect = useRouter();
+// Login Function
 
-// Arrow function to Signin user to supaBase
 const signIn = async () => {
+  console.log('funciona')
   try {
-    // calls the user store and send the users info to backend to logIn
-    await useUserStore().signIn(email.value, password.value);
-    // redirects user to the homeView
-    redirect.push({ path: "/" });
-  } catch (error) {
-    // displays error message
+    const {error} = await supabase.auth.signIn({
+      email: email.value,
+      password: password.value,
+    });
+    if (error) throw error;
+    redirect.push({path: "/"})
+  } catch (error){
     errorMsg.value = `Error: ${error.message}`;
-    // hides error message
-    setTimeout(() => {
-      errorMsg.value = null;
-    }, 5000);
+    setTimeout(() =>{
+  errorMsg.value = null;
+ }, 5000);
   }
 };
+
+
+// Show hide password variables
+// const passwordFieldType = computed(() =>
+  // hidePassword.value ? "password" : "text"
+// );
+// const hidePassword = ref(true);
+
+// Router to push user once SignedIn to the HomeView
+
+
+// // Arrow function to Signin user to supaBase
+// const signIn = async () => {
+//   try {
+//     // calls the user store and send the users info to backend to logIn
+//    const { error } = await useUserStore().signIn(email.value, password.value);
+//     // redirects user to the homeView
+//     redirect.push({ path: "/" });
+//   } catch (error) {
+//     // displays error message
+//     errorMsg.value = `Error: ${error.message}`;
+//     // hides error message
+//     setTimeout(() => {
+//       errorMsg.value = null;
+//     }, 5000);
+//   }
+// };
 </script>
 
 <style>
