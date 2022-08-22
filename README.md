@@ -9,6 +9,7 @@
 *Esqueleto y CSS del Login y Register terminados + introduccion a la logica del register de datos con supabase*
 
 **Day 2**
+
 *Login y Register terminados al 100%, logica aplicada + primeros pasos de mantener la sesion iniciada y navbar del home*
 
 
