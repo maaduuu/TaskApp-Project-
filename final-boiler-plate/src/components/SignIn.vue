@@ -8,8 +8,8 @@
     <div class="login-header text-center flex items-center flex-col">
   
       <a href="#"><img src="https://res.cloudinary.com/dnsnkrcru/image/upload/v1648297523/taskApp/imgs/logo1_ryvwid.svg" alt="logo" class=" h-8 logo-page"></a>
-        <h1 class="text-3xl font-bold">Bienvenido a TaskApp</h1>
-          <p>Organiza tus proyectos de la forma mas comoda!</p>
+        <h1 class="text-3xl font-bold">Welcome to TaskApp</h1>
+          <p>Organize your projects in the most comfortable way!</p>
   
     </div>
   <!-- Login Form -->
