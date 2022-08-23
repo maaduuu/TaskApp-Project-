@@ -28,8 +28,6 @@ import Nav from '../components/Nav.vue';
 import NewTask from '../components/NewTask.vue';
 import Footer from '../components/Footer.vue';
 
-
-
 </script>
 
 <style></style>
