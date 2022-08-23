@@ -1,5 +1,5 @@
 <template>
-  <div>New Task Component</div>
+  <div class="bg-[#f3f4f6] h-[30rem] flex justify-center">New Task Component</div>
 </template>
 
 <script setup>

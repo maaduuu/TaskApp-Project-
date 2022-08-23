@@ -1,5 +1,19 @@
 <template>
-  <div>Nav Component</div>
+  <div class="Nav">
+    <nav class="flex ">
+      <div class="md:py-5 md:px-10  logo">
+        <a href="/"><img src="https://res.cloudinary.com/dnsnkrcru/image/upload/v1648481844/taskApp/imgs/logo-small_bh8xj2.svg" class="md:h-[3rem]" alt="logo"></a>
+      </div>
+      
+      <div class="flex md:items-center md:justify-end md:w-full md:py-5 md:px-10 md:mr-16">
+        <h4>Welcome back {{}}</h4>
+        <div class="">
+          <button class="ml-8 py-2 px-2 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 w-full mb-3">Log Out</button>
+        </div>
+      </div>
+    </nav>
+  </div>
+
 </template>
 
 <script setup>
