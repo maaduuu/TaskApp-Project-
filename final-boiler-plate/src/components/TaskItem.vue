@@ -1,5 +1,5 @@
 <template>
-  <div>Task Item Component</div>
+  <div></div>
 </template>
 
 <script setup>

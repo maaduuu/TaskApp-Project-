@@ -15,14 +15,14 @@
             <div class="p-8 flex items-start rounded-md shadow-lg bg-[#f3f4f6]">
 
             <!-- Form -->
-            <form  class="flex flex-col gap-y-4 w-full">
+            <form @submit.prevent="addEvent" class="flex flex-col gap-y-4 w-full">
 
 
                 
                 <h1 class="mb-4 text-4xl md:text-5xl leading-tight font-bold">Add a new Task</h1>
 
                  <p class="font-semibold">Welcome to App, are you ready to organize your life?</p>
-                 <p>Today is:</p>
+                 <p>Today is: </p>
                  
                  <!-- Event Title -->
                  <div class="flex flex-col">
@@ -38,6 +38,14 @@
 
             </form>
 
+            <div v-if="dataLoaded" class="container mt-10 px-5"></div>
+
+            </div>
+            
+            <div class="mt-10">
+
+            <hr />
+              
             </div>
       </div>
         
@@ -51,19 +59,89 @@
 </template>
 
 <script setup>
+import {ref} from "vue";
+import { supabase } from "../supabase";
+import { useUserStore } from "../stores/user";
+
+
+
+
+const eventTitle = ref("");
+const eventInfo = ref("");
 
 
 // constant to save a variable that define the custom event that will be emitted to the homeView
-// const eventFunction = ref("");
+
 // // constant to save a variable that holds the value of the title input field of the new task
-// const eventTitle = ref("");
+
 // // constant to save a variable that holds the value of the description input field of the new task
-// const eventInfo = ref("");
-// // constant to save a variable that holds an initial false boolean value for the errorMessage container that is conditionally displayed depending if the input field is empty
-// const statusMsg = ref(null);
-// // const constant to save a variable that holds the value of the error message
-// const errorMsg = ref(null);
+
+// constant to save a variable that holds an initial false boolean value for the errorMessage container that is conditionally displayed depending if the input field is empty
+const statusMsg = ref(null);
+// const constant to save a variable that holds the value of the error message
+const errorMsg = ref(null);
+
+
+
 // arrow function to call the form holding the task title and task description that uses a conditional to first checks if the task title is empty, if true the error message is displayed through the errorMessage container and sets a timeOut method that hides the error after some time. Else, its emmits a custom event to the home view with the task title and task description; clears the task title and task description input fields.
+const addEvent = async () =>{
+  try{ 
+console.log(useUserStore().user)
+
+       const { error } = await supabase
+  .from('tasks')
+  .insert([{
+          user_id: useUserStore().user.id,
+          eventTitle: eventTitle.value,
+          is_complete: false,
+          eventInfo: eventInfo.value,
+        }
+        
+        ])
+    if (error) throw error;
+    statusMsg.value = 'Succes: Event add!';
+    eventTitle.value = null;
+    eventInfo.value = null;
+
+setTimeout(() =>{
+      statusMsg.value = false;
+    },5000);
+
+  }
+
+  catch(error) {
+    errorMsg.value = `Error: ${error.message}`;
+    setTimeout(() =>{
+      errorMsg.value = false;
+    },5000);
+  }
+};
+
+
+
+
+// const data = ref([]);
+// const dataLoaded = ref(null);
+
+// // get data
+
+// const getData = async() => {
+//   try{
+//     const {data: tasks, error} = await supabase.from(tasks)
+//     .select('eventTitle, eventInfo');
+//     if (error) throw error;
+//     data.value = tasks;
+//     dataLoaded.value = true;
+//     console.log(data.value);
+//   }
+//   catch(error) {
+//     console.warn(error.message)
+
+//   }
+//   getData();
+// }
+
+
 </script>
 
 <style></style>
