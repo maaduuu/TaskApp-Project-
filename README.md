@@ -13,5 +13,11 @@
 *Login y Register terminados al 100%, logica aplicada + primeros pasos de mantener la sesion iniciada y navbar del home*
 
 
-**Day 3 **
+**Day 3**
+
+*Mantener la sesion iniciada terminada, home page casi terminada a nivel de CSS y primeros pasos en el new task y add task*
+
+**Day 4**
+
+
 
