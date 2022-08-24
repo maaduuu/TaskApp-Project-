@@ -6,7 +6,7 @@
       </div>
       
       <div class="flex md:items-center md:justify-end md:w-full md:py-5 md:px-10 md:mr-16">
-        <h4 class="hidden">Welcome back {{user.email}}</h4>
+        <h4 class="sm:hidden">Welcome back {{user.email}}</h4>
         <div class="">
           <button @click="logout" class=" items-end md:items-center ml-8 py-2 px-2 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 w-full mb-3">Log Out</button>
         </div>

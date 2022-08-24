@@ -1,5 +1,8 @@
 <template>
-  <div></div>
+  <div class="container px-4 bg-[#E7ECF0]"> 
+<span /> 
+    
+    </div>
 </template>
 
 <script setup>
@@ -8,7 +11,13 @@
 // ])
 
 // const props = defineProps(["ENTER-PROP-HERE"]);
+
+
+// import { useUserStore } from "../stores/user";
+
+// useUserStore().fetchUser()
 </script>
+
 
 <style></style>
 

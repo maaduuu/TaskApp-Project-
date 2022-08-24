@@ -38,15 +38,10 @@
 
             </form>
 
-            <div v-if="dataLoaded" class="container mt-10 px-5"></div>
+           
 
             </div>
             
-            <div class="mt-10">
-
-            <hr />
-              
-            </div>
       </div>
         
         
