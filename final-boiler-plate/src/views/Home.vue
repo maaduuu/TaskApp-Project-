@@ -6,14 +6,14 @@
   
   </nav>
   
-  <section>
+  <section class="">
   <div>
     <NewTask/>
   </div>
   </section>
   
   
-  <footer>
+  <footer class="">
   
   <div>
     <Footer/>
