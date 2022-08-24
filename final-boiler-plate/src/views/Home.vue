@@ -1,19 +1,19 @@
 <template>
   <nav>
-  <div class="w-[100%]"> 
+  <div> 
     <Nav/>
   </div>
   
   </nav>
   
-  <section class="">
+  <section>
   <div>
     <NewTask/>
   </div>
   </section>
   
   
-  <footer class="">
+  <footer >
   
   <div>
     <Footer/>

@@ -57,6 +57,7 @@ import { useUserStore } from "../stores/user";
 import { storeToRefs } from "pinia";
 
 
+
 // Route Variables
 const route = "/auth/sign-up";
 const buttonText = "Test the Sign Up Route";
@@ -74,21 +75,28 @@ const errorMsg = ref("");
 // Login Function
 
 const signIn = async () => {
-  console.log('funciona')
   try {
-    const {error} = await supabase.auth.signIn({
-      email: email.value,
-      password: password.value,
-    });
-    if (error) throw error;
-    redirect.push({path: "/"})
-  } catch (error){
+      await useUserStore().signIn(email.value, password.value)
+      redirect.push({path: "/"})
+
+  } catch (error) {
     errorMsg.value = `Error: ${error.message}`;
     setTimeout(() =>{
   errorMsg.value = null;
  }, 5000);
   }
-};
+}
+
+// const signIn = async () => {
+//   console.log('funciona')
+//   try {
+//     const {error} = await supabase.auth.signIn({
+//       email: email.value,
+//       password: password.value,
+//     });
+//     if (error) throw error;
+//     redirect.push({path: "/"})
+// };
 
 
 // Show hide password variables
