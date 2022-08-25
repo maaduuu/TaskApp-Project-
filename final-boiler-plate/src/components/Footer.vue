@@ -9,6 +9,7 @@
 
     <div class="flex md:justify-center md:mt-5 font-medium text-center item-center h-[50%] text-lg">
       <p>© 2022 TaskApp. All rights reserved. <br> by: <a href="https://www.instagram.com/maaduuu___/" class="text-red-500">@maaduuu___</a></p>
+      <br>
     </div>
 
     
