@@ -5,7 +5,7 @@ import { useRouter } from "vue-router";
 import { useUserStore } from "./stores/user.js";
 import { ref } from "vue";
 import {supabase} from './supabase';
-import store from './stores/index'
+// import store from './stores/index'
 const router = useRouter();
 const userStore = useUserStore();
 const { user } = storeToRefs(userStore);
@@ -21,28 +21,29 @@ if (!users) {
 }
 
 
-supabase.auth.onAuthStateChange((_, session) => {
-  store.methods.setUser(session);
-  appReady.value = true;
+// supabase.auth.onAuthStateChange((_, session) => {
+//   store.methods.setUser(session);
+//   appReady.value = true;
   
-});
-
-// onMounted(async () => {
-//   const appReady = ref(null);
-//   try {
-//     await userStore.fetchUser(); // here we call fetch user
-//     if (!user.value) {
-//       // redirect them to logout if the user is not there
-//       appReady.value = true;
-//       router.push({ path: "/auth/login" });
-//     } else {
-//       // continue to dashboard
-//       // router.push({ path: "/" });
-//     }
-//   } catch (e) {
-//     console.log(e);
-//   }
 // });
+
+onMounted(async () => {
+  const appReady = ref(null);
+  try {
+    await userStore.fetchUser(); // here we call fetch user
+    if (!user.value) {
+      console.log("estamos en el if")
+      // redirect them to logout if the user is not there
+      appReady.value = true;
+      router.push({ path: "/auth/login" });
+    } else { console.log("estamos en el else",user.value)
+      // continue to dashboard
+      // router.push({ path: "/" });
+    }
+  } catch (e) {
+    console.log(e);
+  }
+});
 </script>
 
 <template>
