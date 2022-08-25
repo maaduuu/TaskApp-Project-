@@ -57,10 +57,12 @@ import { supabase } from "../supabase";
 import { useUserStore } from "../stores/user";
 
 
-
-
 const eventTitle = ref("");
 const eventInfo = ref("");
+
+const emit = defineEmits([
+  "addEvent"
+]) 
 
 
 // constant to save a variable that define the custom event that will be emitted to the homeView
@@ -81,17 +83,18 @@ const addEvent = async () =>{
   try{ 
 console.log(useUserStore().user)
 
-       const { error } = await supabase
-  .from('tasks')
-  .insert([{
-          user_id: useUserStore().user.id,
-          eventTitle: eventTitle.value,
-          is_complete: false,
-          eventInfo: eventInfo.value,
-        }
+      emit("addEvent",eventTitle.value,eventInfo.value);
+//      const { error } = await supabase
+  // .from('tasks')
+  // .insert([{
+  //         user_id: useUserStore().user.id,
+  //         eventTitle: eventTitle.value,
+  //         is_complete: false,
+  //         eventInfo: eventInfo.value,
+  //       }
         
-        ])
-    if (error) throw error;
+  //       ])
+  //   if (error) throw error;
     statusMsg.value = 'Succes: Event add!';
     eventTitle.value = null;
     eventInfo.value = null;

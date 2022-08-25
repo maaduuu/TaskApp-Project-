@@ -9,9 +9,12 @@
   <section>
   <div>
   
-    <NewTask/>
+    <NewTask @addEvent="addEvent" />
  
-    <TaskItem />
+    <TaskItem v-for="task in tasks"
+              :task = "task" :key="task.id"
+              @delete="deleteTask"
+     />
   
   </div>
 
@@ -34,6 +37,29 @@ import Nav from '../components/Nav.vue';
 import NewTask from '../components/NewTask.vue';
 import TaskItem from '../components/TaskItem.vue';
 import Footer from '../components/Footer.vue';
+import {useTaskStore} from "../stores/task";
+import {ref} from 'vue';
+
+
+
+const tasks = ref([]);
+
+const refresh = async () =>{
+  tasks.value = await useTaskStore().fetchTasks();
+  tasks.value.forEach((task) => console.log(task))
+};
+
+refresh();
+
+const addEvent = async (eventTitle, eventInfo ) => {
+  await useTaskStore().addTask(eventTitle, eventInfo)
+  refresh();
+};
+
+const deleteTask = async (task) => {
+  await useTaskStore().delete(task.id);
+  refresh();
+};
 
 </script>
 

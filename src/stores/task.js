@@ -3,6 +3,7 @@ import { supabase } from "../supabase";
 import { useUserStore } from "./user";
 
 export const useTaskStore = defineStore("tasks", {
+
   state: () => ({
     tasks: null,
   }),
@@ -16,16 +17,23 @@ export const useTaskStore = defineStore("tasks", {
       return this.tasks;
     },
     // New code
-    async addTask(title, description) {
+    async addTask(eventTitle, eventInfo) {
       console.log(useUserStore().user.id);
       const { data, error } = await supabase.from("tasks").insert([
         {
           user_id: useUserStore().user.id,
-          title: title,
+          eventTitle: eventTitle,
           is_complete: false,
-          description: description,
+          eventInfo: eventInfo,
         },
       ]);
+    },
+
+    async delete(id) {
+      const { data, error } = await supabase
+        .from('tasks')
+        .delete()
+        .match({id: id})
     },
   },
 });

@@ -1,19 +1,29 @@
 <template>
   <div class="container px-4 bg-[#E7ECF0]"> 
-<span /> 
+   
+   <h1>{{task.eventTitle}}</h1>
+   <p>{{task.eventInfo}}</p>
+   <p>{{task.is_complete}}</p>
+   
+   <button @click="deleteTask">Delete</button>
     
-    </div>
+  </div>
 </template>
 
 <script setup>
-// const emit = defineEmits([
-//   ENTER-EMITS-HERE
-// ])
+const props = defineProps([
+  "task"
+]);
 
-// const props = defineProps(["ENTER-PROP-HERE"]);
+const emit = defineEmits([
+  "delete"
+]);
+
+const deleteTask = () =>{
+  emit("delete",props.task)
+};
 
 
-// import { useUserStore } from "../stores/user";
 
 // useUserStore().fetchUser()
 </script>
