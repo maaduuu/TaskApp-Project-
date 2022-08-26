@@ -1,58 +1,51 @@
 <template>
   <nav>
-  <div> 
-    <Nav/>
-  </div>
-  
+    <div>
+      <Nav />
+    </div>
   </nav>
-  
+
   <section>
-  <div>
-  
-    <NewTask @addEvent="addEvent" />
- 
-    <TaskItem v-for="task in tasks"
-              :task = "task" :key="task.id"
-              @delete="deleteTask"
-     />
-  
-  </div>
+    <div>
+      <NewTask @addEvent="addEvent" />
 
-  
+      <TaskItem
+        v-for="task in tasks"
+        :task="task"
+        :key="task.id"
+        @delete="deleteTask"
+        @editTask="editTask"
+        @complete="completeTask"
+      />
+    </div>
   </section>
-  
-  
-  <footer >
-  
-  <div>
-    <Footer/>
-  </div>
 
+  <footer>
+    <div>
+      <Footer />
+    </div>
   </footer>
-  
 </template>
 
 <script setup>
-import Nav from '../components/Nav.vue';
-import NewTask from '../components/NewTask.vue';
-import TaskItem from '../components/TaskItem.vue';
-import Footer from '../components/Footer.vue';
-import {useTaskStore} from "../stores/task";
-import {ref} from 'vue';
-
-
+import Nav from "../components/Nav.vue";
+import NewTask from "../components/NewTask.vue";
+import TaskItem from "../components/TaskItem.vue";
+import Footer from "../components/Footer.vue";
+import { useTaskStore } from "../stores/task";
+import { ref } from "vue";
 
 const tasks = ref([]);
 
-const refresh = async () =>{
+const refresh = async () => {
   tasks.value = await useTaskStore().fetchTasks();
-  tasks.value.forEach((task) => console.log(task))
+  tasks.value.forEach((task) => console.log(task));
 };
 
 refresh();
 
-const addEvent = async (eventTitle, eventInfo ) => {
-  await useTaskStore().addTask(eventTitle, eventInfo)
+const addEvent = async (eventTitle, eventInfo) => {
+  await useTaskStore().addTask(eventTitle, eventInfo);
   refresh();
 };
 
@@ -61,6 +54,23 @@ const deleteTask = async (task) => {
   refresh();
 };
 
+const editTask = async (task) => {
+  const newTitle = task.newTitle;
+  const newDescription = task.newDescription;
+  const taskId = task.taskId.id;
+
+  await useTaskStore().edit(newTitle, newDescription, taskId);
+  refresh();
+};
+
+
+const completeTask = async (task) => {
+
+  const completeStatus = !task.is_complete;
+  const taskId = task.id;
+  await useTaskStore().completeTask(completeStatus, taskId);
+  refresh();
+}
 </script>
 
 <style></style>

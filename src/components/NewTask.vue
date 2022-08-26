@@ -1,6 +1,7 @@
 <template>
 
     <div class="container px-4 mx-auto bg-[#E7ECF0]">
+
       <div class="max-w-4xl mx-auto text-center mb">   
   
               <!-- Status MSG -->
@@ -9,41 +10,37 @@
               <p class="text-red-500">{{errorMsg}} </p>
             </div>
 
-              <span class=" inline-block px-2 mb-2 mt-2 text-xs leading-5 text-white bg-red-500 font-medium rounded-full shadow-sm"> TASK </span>
+            <span class=" inline-block px-2 mb-2 mt-2 text-xs leading-5 text-white bg-red-500 font-medium rounded-full shadow-sm"> TASK </span>
 
             <!-- Create -->
             <div class="p-8 flex items-start rounded-md shadow-lg bg-[#f3f4f6]">
 
             <!-- Form -->
             <form @submit.prevent="addEvent" class="flex flex-col gap-y-4 w-full">
-
-
                 
                 <h1 class="mb-4 text-4xl md:text-5xl leading-tight font-bold">Add a new Task</h1>
 
                  <p class="font-semibold">Welcome to App, are you ready to organize your life?</p>
+
                  <p>Today is: </p>
                  
                  <!-- Event Title -->
                  <div class="flex flex-col">
-
 
                   <input type="text" required class="p-3 text-gray-500 focus:outline-none rounded-md mb-4 shadow-lg " id="event-title" v-model="eventTitle" placeholder="Add the title of the Event">
                                    
                   <input type="text" class="p-3 text-gray-500 focus:outline-none rounded-md mb-4 shadow-lg" id="event-info" v-model="eventInfo" placeholder="Add info about Event">
 
                   <button type="submit" class="inline-block p-3 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-300 w-full mb-3">Add new Task</button>
-                 </div>
 
+                 </div>
 
             </form>
 
             </div>
             
       </div>
-        
-        
-        
+                
     </div>
     
       

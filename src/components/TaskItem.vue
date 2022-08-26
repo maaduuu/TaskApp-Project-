@@ -1,35 +1,74 @@
 <template>
-  <div class="container px-4 bg-[#E7ECF0]"> 
-   
-   <h1>{{task.eventTitle}}</h1>
-   <p>{{task.eventInfo}}</p>
-   <p>{{task.is_complete}}</p>
-   
-   <button @click="deleteTask">Delete</button>
-    
+  <div class="container px-4 bg-[#E7ECF0]">
+    <h1>{{ task.eventTitle }}</h1>
+    <p>{{ task.eventInfo }}</p>
+    <p>{{ task.is_complete }}</p>
+    <div v-if="editDialog">
+      <h1>Hola</h1>
+      <input type="text" v-model="newTitle" />
+      <br /><br />
+      <input type="text" v-model="newDescription" />
+
+      <button @click.prevent="editTask">Save</button>
+    </div>
+
+    <button @click="deleteTask">Delete</button>
+
+    <button @click="toggleDialog">Edit</button>
+
+    <button
+    :class="[task.is_complete ? 'bg-red-500' : 'bg-green-500']"
+     @click="completeTask">{{task.is_complete ? 'uncomplete' : 'complete'}}</button>
   </div>
 </template>
 
 <script setup>
-const props = defineProps([
-  "task"
-]);
+import { ref } from "vue";
 
-const emit = defineEmits([
-  "delete"
-]);
+const editDialog = ref(false);
 
-const deleteTask = () =>{
-  emit("delete",props.task)
+const newTitle = ref("");
+const newDescription = ref("");
+
+const props = defineProps(["task"]);
+
+const toggleDialog = () => {
+  editDialog.value = !editDialog.value;
+  newTitle.value = props.task.eventTitle;
+  newDescription.value = props.task.eventInfo;
 };
 
+const emit = defineEmits(["delete", "editTask", "complete"]);
 
+const deleteTask = () => {
+  emit("delete", props.task);
+};
+
+const completeTask = () => {
+  console.log("¨Clicked")
+  emit("complete", props.task);
+};
+
+ 
+const editTask = () => {
+  const newInfo = {
+    taskId : props.task,
+    newTitle : newTitle.value,
+    newDescription : newDescription.value,
+  }
+  emit("editTask", newInfo);
+  editDialog.value = false;
+  newTitle.value = ""
+  newDescription.value = ""
+
+};
 
 // useUserStore().fetchUser()
 </script>
 
 
-<style></style>
+<style>
+</style>
 
 <!-- 
 **Hints**

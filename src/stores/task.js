@@ -3,7 +3,6 @@ import { supabase } from "../supabase";
 import { useUserStore } from "./user";
 
 export const useTaskStore = defineStore("tasks", {
-
   state: () => ({
     tasks: null,
   }),
@@ -31,9 +30,23 @@ export const useTaskStore = defineStore("tasks", {
 
     async delete(id) {
       const { data, error } = await supabase
-        .from('tasks')
+        .from("tasks")
         .delete()
-        .match({id: id})
+        .match({ id: id });
+    },
+
+    async edit(eventTitle, eventInfo, id) {
+      const { data, error } = await supabase
+        .from("tasks")
+        .update({ eventTitle: eventTitle, eventInfo: eventInfo })
+        .match({ id: id });
+    },
+
+    async completeTask(bol, id) {
+      const { data, error } = await supabase
+        .from("tasks")
+        .update({ is_complete: bol })
+        .match({ id: id });
     },
   },
 });
