@@ -1,14 +1,15 @@
 <template>
   <div class="Nav">
     <nav class="flex ">
-      <div class="md:py-5 md:px-10  logo">
-        <a href="/"><img src="https://res.cloudinary.com/dnsnkrcru/image/upload/v1648481844/taskApp/imgs/logo-small_bh8xj2.svg" class="md:h-[3rem]" alt="logo"></a>
+      <div class="md:py-5 md:px-10 flex logo">
+        <a href="/"><img src="https://cdn-icons-png.flaticon.com/512/2098/2098402.png" class="h-[3rem] md:w-[5rem] cover" alt="logo"></a>
+        <h2 class="justify-center flex items-center font-semibold ml-[1rem] text-2xl">TaskApp</h2>
       </div>
       
-      <div class="flex md:items-center md:justify-end md:w-full md:py-5 md:px-10 md:mr-16">
+      <div class="flex items-center justify-end md:w-full md:py-5 md:px-10 md:mr-16 sm:ml-[9rem] sm:mt-3">
         <h4 class="sm:hidden">Welcome back {{user.email}}</h4>
         <div class="">
-          <button @click="logout" class=" items-end md:items-center ml-8 py-2 px-2 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 w-full mb-3">Log Out</button>
+          <button @click="logout" class=" md:items-center ml-8 py-2 px-2 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 md:w-full mb-3">Log Out</button>
         </div>
       </div>
     </nav>

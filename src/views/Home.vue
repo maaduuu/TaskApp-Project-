@@ -1,9 +1,11 @@
 <template>
-  <nav>
+ <nav>
     <div>
       <Nav />
     </div>
   </nav>
+
+<div class="bg-[url('https://cdnb.artstation.com/p/assets/images/images/016/788/959/original/pixel-jeff-sunday-mood.gif?1553487997')] bg-no-repeat bg-cover sm:bg-center sm:h-screen">
 
   <section>
     <div>
@@ -20,11 +22,14 @@
     </div>
   </section>
 
-  <footer>
+<footer>
     <div>
       <Footer />
     </div>
   </footer>
+</div>
+
+ 
 </template>
 
 <script setup>
@@ -73,7 +78,9 @@ const completeTask = async (task) => {
 }
 </script>
 
-<style></style>
+<style>
+
+</style>
 
 <!-- 
 **Hints**

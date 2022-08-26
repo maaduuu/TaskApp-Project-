@@ -1,6 +1,6 @@
 <template>
 
-    <div class="container px-4 mx-auto bg-[#E7ECF0]">
+    <div class="container px-4 mx-auto">
 
       <div class="max-w-4xl mx-auto text-center mb">   
   

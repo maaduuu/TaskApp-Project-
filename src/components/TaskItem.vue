@@ -1,24 +1,26 @@
 <template>
-  <div class="container px-4 bg-[#E7ECF0]">
-    <h1>{{ task.eventTitle }}</h1>
-    <p>{{ task.eventInfo }}</p>
-    <p>{{ task.is_complete }}</p>
+  <div class="container px-4 bg-gray-100 flex-col flex sm:w-[60%] rounded md:w-[25%] mt-3 mx-auto">
+    <h1 class="bg-gray-200 rounded shadow-md ml-2 p-[0.4rem] mt-2">{{ task.eventTitle }}</h1>
+    <p class="bg-gray-200 rounded shadow-md ml-2 p-[0.4rem] mt-2">{{ task.eventInfo }}</p>
+    <!-- <p class="rounded shadow-md ml-2 p-[0.4rem] mt-2 w-[3rem]">{{ task.is_complete }}</p> -->
     <div v-if="editDialog">
-      <h1>Hola</h1>
-      <input type="text" v-model="newTitle" />
-      <br /><br />
-      <input type="text" v-model="newDescription" />
+      <input class="bg-gray-200 rounded shadow-md ml-2 p-[0.4rem] mt-4 mb-3" type="text" placeholder="Edit Title" v-model="newTitle" />
+      <input  class="bg-gray-200 rounded shadow-md ml-2 p-[0.4rem]" type="text" placeholder="Edit Info" v-model="newDescription" />
 
-      <button @click.prevent="editTask">Save</button>
+      <button class="rounded shadow-md ml-2 p-[0.4rem] mb-3" @click.prevent="editTask">Save</button>
     </div>
 
-    <button @click="deleteTask">Delete</button>
+    <div class="flex">
+    <button class="rounded shadow-md ml-2 p-[0.4rem] mb-3 w-[5rem] mt-2 font-semibold" @click="deleteTask">Delete</button>
 
-    <button @click="toggleDialog">Edit</button>
+    <button class="rounded shadow-md ml-2 p-[0.4rem] mb-3 w-[5rem] mt-2 font-semibold" @click="toggleDialog">Edit</button>
 
     <button
-    :class="[task.is_complete ? 'bg-red-500' : 'bg-green-500']"
-     @click="completeTask">{{task.is_complete ? 'uncomplete' : 'complete'}}</button>
+    :class="[task.is_complete ? 'bg-red-500' : 'bg-green-500']" class="rounded shadow-md ml-2 p-[0.4rem] mb-3 mt-2 w-[8rem] font-semibold"
+     @click="completeTask">{{task.is_complete ? 'Uncomplete 😐' : 'Complete!'}}</button>
+    </div>
+   
+    
   </div>
 </template>
 
