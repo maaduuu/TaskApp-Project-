@@ -22,7 +22,7 @@
     </div>
 
 
-<footer class="md:justify-center md:flex md:p-6 md: mt-3">
+<footer class="md:justify-center md:flex md:p-6 md:mt-3 ">
     <div>
       <Footer />
     </div>
