@@ -6,8 +6,8 @@
   
               <!-- Status MSG -->
             <div v-if="statusMsg || errorMsg" class="mb-10 p-4 bg-grey-300 rounded-md">
-              <p class="text-at-light-green"> {{statusMsg}} </p> 
-              <p class="text-red-500">{{errorMsg}} </p>
+              <p class="text-at-light-green text-white"> {{statusMsg}} </p> 
+              <p class="text-white">{{errorMsg}} </p>
             </div>
 
             <span class=" inline-block px-2 mb-2 mt-2 text-xs leading-5 text-white bg-red-500 font-medium rounded-full shadow-sm"> TASK </span>

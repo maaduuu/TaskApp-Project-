@@ -5,7 +5,7 @@
     </div>
   </nav>
 
-<div class="bg-[url('https://cdnb.artstation.com/p/assets/images/images/016/788/959/original/pixel-jeff-sunday-mood.gif?1553487997')] bg-no-repeat bg-cover sm:bg-center sm:h-screen">
+<div class="bg-[url('https://cdnb.artstation.com/p/assets/images/images/016/788/959/original/pixel-jeff-sunday-mood.gif?1553487997')] bg-no-repeat bg-cover h-screen sm:bg-center sm:h-screen">
 
   <section>
     <div>
@@ -20,13 +20,17 @@
         @complete="completeTask"
       />
     </div>
-  </section>
 
-<footer>
+
+<footer class="md:justify-center md:flex md:p-6 md: mt-3">
     <div>
       <Footer />
     </div>
   </footer>
+
+  </section>
+
+
 </div>
 
  
