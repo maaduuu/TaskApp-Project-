@@ -22,7 +22,7 @@
 
                  <p class="font-semibold">Welcome to App, are you ready to organize your life?</p>
 
-                 <p>Today is: </p>
+                 <!-- <p>Today is: </p> -->
                  
                  <!-- Event Title -->
                  <div class="flex flex-col">
